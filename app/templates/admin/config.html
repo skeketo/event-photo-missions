@@ -60,73 +60,77 @@
       </p>
 
       <div class="config-note">
-        Los cambios se guardan en <code>/app/data/app_config.json</code>.
-        Si cambias el tipo de evento, después puedes ir a <strong>Misiones</strong> y recargar el banco.
+        {{ t("config_saved_in") }} <code>/app/data/app_config.json</code>.
+        {{ t("config_note_change_type") }}
       </div>
 
       <form method="post" action="/admin/configuracion" class="form">
         <div class="config-grid">
           <label>
-            Nombre de la app
+            {{ t("config_app_name_short") }}
             <input name="APP_NAME" value="{{ config.APP_NAME }}" required>
-            <small>Ejemplo: Event Photo Missions</small>
+            <small>{{ t("config_example_app_name") }}</small>
           </label>
 
           <label>
-            Fecha o texto de fecha
+            {{ t("config_date_text") }}
             <input name="EVENT_DATE" value="{{ config.EVENT_DATE }}">
-            <small>Ejemplo: 12/12/2026 o “Próximamente”</small>
+            <small>{{ t("config_example_date") }}</small>
           </label>
 
           <label>
-            URL pública
+            {{ t("config_public_url") }}
             <input name="PUBLIC_BASE_URL" value="{{ config.PUBLIC_BASE_URL }}">
-            <small>Ejemplo: https://fotos.midominio.com</small>
+            <small>{{ t("config_example_public_url") }}</small>
           </label>
 
-                  <label>
-          {{ t("config_language") }}
-          <select name="APP_LANGUAGE">
-            {% for code, label in supported_languages.items() %}
-              <option value="{{ code }}" {% if config.APP_LANGUAGE == code %}selected{% endif %}>{{ label }}</option>
-            {% endfor %}
-          </select>
-        </label><label>
+          <label>
+            {{ t("config_language") }}
+            <select name="APP_LANGUAGE">
+              {% for code, label in supported_languages.items() %}
+                <option value="{{ code }}" {% if config.APP_LANGUAGE == code %}selected{% endif %}>{{ label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+
+          <label>
             {{ t("config_event_type") }}
             <select name="EVENT_TYPE">
               {% for item in event_types %}
-                <option value="{{ item }}" {% if config.EVENT_TYPE == item %}selected{% endif %}>{{ item }}</option>
+                <option value="{{ item }}" {% if config.EVENT_TYPE == item %}selected{% endif %}>
+                  {{ t("event_type_" ~ item) }}
+                </option>
               {% endfor %}
             </select>
-            <small>wedding, birthday, company, party, communion o custom</small>
+            <small>{{ t("config_event_type_options_help") }}</small>
           </label>
 
           <label>
-            Organizadores/protagonistas
+            {{ t("config_hosts") }}
             <input name="EVENT_HOSTS" value="{{ config.EVENT_HOSTS }}">
-            <small>Ejemplo: los novios, Antonio, el equipo comercial...</small>
+            <small>{{ t("config_example_hosts") }}</small>
           </label>
 
           <label>
             {{ t("config_event_label") }}
             <input name="EVENT_LABEL" value="{{ config.EVENT_LABEL }}">
-            <small>Ejemplo: boda, cumpleaños, evento de empresa, fiesta...</small>
+            <small>{{ t("config_example_event_label") }}</small>
           </label>
 
           <label>
             {{ t("config_protagonists_label") }}
             <input name="PROTAGONISTS_LABEL" value="{{ config.PROTAGONISTS_LABEL }}">
-            <small>Ejemplo: novios, cumpleañero, equipo, protagonistas...</small>
+            <small>{{ t("config_example_protagonists") }}</small>
           </label>
 
           <label>
             {{ t("config_prize_text") }}
             <input name="PRIZE_TEXT" value="{{ config.PRIZE_TEXT }}">
-            <small>Ejemplo: un premio especial para el ganador</small>
+            <small>{{ t("config_example_prize") }}</small>
           </label>
 
           <label>
-            Texto legal
+            {{ t("config_legal") }}
             <textarea name="LEGAL_TEXT">{{ config.LEGAL_TEXT }}</textarea>
           </label>
         </div>
@@ -139,8 +143,8 @@
       </form>
 
       <div class="config-warning">
-        Cambiar el tipo de evento no modifica automáticamente las misiones ya cargadas.
-        Para aplicar el nuevo banco, entra en <strong>Misiones</strong> y pulsa recargar banco.
+        {{ t("config_warning_missions_not_auto") }}
+        {{ t("config_apply_new_bank") }}
       </div>
     </section>
   </main>
