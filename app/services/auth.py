@@ -25,8 +25,14 @@ def verify_login(username, password, token):
     if password != admin_password():
         return False
 
-    secret = admin_2fa_secret()
+    secret = admin_2fa_secret().strip()
+
+    # If no TOTP secret is configured, 2FA is disabled.
+    # This makes first-run setup easier for Docker/Unraid users.
     if not secret:
+        return True
+
+    if not token:
         return False
 
     totp = pyotp.TOTP(secret)
