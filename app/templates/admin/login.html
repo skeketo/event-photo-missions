@@ -14,7 +14,7 @@
       <h1>Acceso admin</h1>
 
       <p class="intro">
-        Introduce usuario, contraseña y código 2FA.
+        Introduce usuario y contraseña{% if twofa_enabled %}, además del código 2FA{% endif %}.
       </p>
 
       {% if error %}
@@ -24,7 +24,11 @@
       <form method="post" action="/admin/login" class="form">
         <input name="username" placeholder="Usuario" required>
         <input name="password" type="password" placeholder="Contraseña" required>
-        <input name="token" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="Código 2FA" required>
+        {% if twofa_enabled %}
+          <input name="token" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="Código 2FA" required>
+        {% else %}
+          <input name="token" type="hidden" value="">
+        {% endif %}
 
         <button class="btn primary" type="submit">Entrar</button>
       </form>
