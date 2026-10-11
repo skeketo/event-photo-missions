@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>Event-Photo-Missions</Name>
-  <Repository>event-photo-missions:latest</Repository>
-  <Registry>https://hub.docker.com/</Registry>
+  <Repository>ghcr.io/skeketo/event-photo-missions:latest</Repository>
+  <Registry>https://ghcr.io</Registry>
   <Network>bridge</Network>
   <Privileged>false</Privileged>
 
-  <Support>https://github.com/YOUR_USERNAME/event-photo-missions/issues</Support>
-  <Project>https://github.com/YOUR_USERNAME/event-photo-missions</Project>
+  <Support>https://github.com/skeketo/event-photo-missions/issues</Support>
+  <Project>https://github.com/skeketo/event-photo-missions</Project>
   <Overview>Self-hosted photo and video mission game for weddings, birthdays, company events, parties and private celebrations.</Overview>
   <Category>Productivity: MediaApp: Other:</Category>
   <WebUI>http://[IP]:[PORT:8000]/</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/YOUR_USERNAME/unraid-event-photo-missions/main/templates/event-photo-missions.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/YOUR_USERNAME/unraid-event-photo-missions/main/icon.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/skeketo/event-photo-missions/main/unraid-template/event-photo-missions.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/skeketo/event-photo-missions/main/icon.png</Icon>
 
   <Config Name="WebUI Port" Target="8000" Default="8093" Mode="tcp" Description="Web interface port" Type="Port" Display="always" Required="true" Mask="false">8093</Config>
 
