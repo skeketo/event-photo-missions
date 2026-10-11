@@ -97,7 +97,7 @@ Antonio;Lopez;Antonio;Main area;Family
 
 - Change ADMIN_PASSWORD.
 - Set a strong SECRET_KEY.
-- Set a valid ADMIN_2FA_SECRET.
+- ADMIN_2FA_SECRET is optional. Leave it empty to disable 2FA, or set a valid TOTP secret to require 2FA.
 - Use HTTPS when exposing the app publicly.
 - Do not publish /uploads directly through a web server.
 - Keep regular backups of data/ and uploads/.
