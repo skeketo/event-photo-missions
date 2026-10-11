@@ -81,7 +81,7 @@ def admin_login_get(request: Request, error: str = ""):
 def admin_login_post(
     username: str = Form(...),
     password: str = Form(...),
-    token: str = Form(...),
+    token: str = Form(""),
 ):
     if verify_login(username, password, token):
         return login_response()
