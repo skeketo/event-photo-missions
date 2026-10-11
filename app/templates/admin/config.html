@@ -84,7 +84,14 @@
             <small>Ejemplo: https://fotos.midominio.com</small>
           </label>
 
-          <label>
+                  <label>
+          Idioma de la aplicación
+          <select name="APP_LANGUAGE">
+            {% for code, label in supported_languages.items() %}
+              <option value="{{ code }}" {% if config.APP_LANGUAGE == code %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+          </select>
+        </label><label>
             Tipo de evento
             <select name="EVENT_TYPE">
               {% for item in event_types %}

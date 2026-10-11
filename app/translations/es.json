@@ -1,0 +1,51 @@
+{
+  "app_public_tagline": "Juego fotográfico del evento",
+  "home_title": "Comparte los mejores recuerdos",
+  "home_intro": "Busca tu nombre, descubre tus misiones y sube fotos o vídeos durante el evento.",
+  "home_find_missions": "Ver misiones",
+  "home_upload": "Subir foto o vídeo",
+  "home_ranking": "Ver ranking",
+
+  "admin_login_tag": "Panel privado",
+  "admin_login_title": "Acceso admin",
+  "admin_login_intro_basic": "Introduce usuario y contraseña.",
+  "admin_login_intro_2fa": "Introduce usuario, contraseña y código 2FA.",
+  "admin_login_username": "Usuario",
+  "admin_login_password": "Contraseña",
+  "admin_login_2fa": "Código 2FA",
+  "admin_login_button": "Entrar",
+  "admin_back_public": "Volver a la web pública",
+
+  "admin_dashboard_title": "Panel de administración",
+  "admin_dashboard_intro": "Gestiona configuración, invitados, misiones, asignaciones, subidas, ranking y tarjetas.",
+  "admin_config": "Configuración",
+  "admin_guests": "Invitados",
+  "admin_missions": "Misiones",
+  "admin_assignments": "Asignaciones",
+  "admin_uploads": "Subidas",
+  "admin_cards": "Tarjetas / PDFs",
+  "admin_logout": "Cerrar sesión",
+
+  "config_title": "Configuración del evento",
+  "config_intro": "Personaliza el evento, el idioma, la URL pública, los textos legales y el premio.",
+  "config_language": "Idioma",
+  "config_save": "Guardar configuración",
+
+  "missions_search_title": "Busca tus misiones",
+  "missions_search_intro": "Introduce tu nombre, alias o código para ver tus misiones asignadas.",
+  "missions_search_placeholder": "Nombre, alias o código",
+  "missions_search_button": "Buscar",
+
+  "upload_title": "Subir foto o vídeo",
+  "upload_guest": "Participante",
+  "upload_mission": "Misión",
+  "upload_file": "Archivo",
+  "upload_button": "Subir archivo",
+  "upload_success_title": "Archivo recibido",
+  "upload_success_intro": "Tu foto o vídeo se ha guardado correctamente.",
+  "uploads_closed_title": "Subidas cerradas",
+  "uploads_closed_intro": "Las subidas todavía no están abiertas.",
+
+  "ranking_title": "Ranking",
+  "ranking_intro": "Consulta la clasificación de participantes."
+}

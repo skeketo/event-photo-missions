@@ -1,0 +1,51 @@
+{
+  "app_public_tagline": "Event photo game",
+  "home_title": "Share the best memories",
+  "home_intro": "Find your name, discover your missions and upload photos or videos during the event.",
+  "home_find_missions": "View missions",
+  "home_upload": "Upload photo or video",
+  "home_ranking": "View ranking",
+
+  "admin_login_tag": "Private panel",
+  "admin_login_title": "Admin login",
+  "admin_login_intro_basic": "Enter your username and password.",
+  "admin_login_intro_2fa": "Enter your username, password and 2FA code.",
+  "admin_login_username": "Username",
+  "admin_login_password": "Password",
+  "admin_login_2fa": "2FA code",
+  "admin_login_button": "Log in",
+  "admin_back_public": "Back to public website",
+
+  "admin_dashboard_title": "Admin dashboard",
+  "admin_dashboard_intro": "Manage configuration, guests, missions, assignments, uploads, ranking and cards.",
+  "admin_config": "Configuration",
+  "admin_guests": "Guests",
+  "admin_missions": "Missions",
+  "admin_assignments": "Assignments",
+  "admin_uploads": "Uploads",
+  "admin_cards": "Cards / PDFs",
+  "admin_logout": "Log out",
+
+  "config_title": "Event configuration",
+  "config_intro": "Customize the event, language, public URL, legal text and prize.",
+  "config_language": "Language",
+  "config_save": "Save configuration",
+
+  "missions_search_title": "Find your missions",
+  "missions_search_intro": "Enter your name, alias or code to view your assigned missions.",
+  "missions_search_placeholder": "Name, alias or code",
+  "missions_search_button": "Search",
+
+  "upload_title": "Upload photo or video",
+  "upload_guest": "Participant",
+  "upload_mission": "Mission",
+  "upload_file": "File",
+  "upload_button": "Upload file",
+  "upload_success_title": "File received",
+  "upload_success_intro": "Your photo or video has been saved successfully.",
+  "uploads_closed_title": "Uploads closed",
+  "uploads_closed_intro": "Uploads are not open yet.",
+
+  "ranking_title": "Ranking",
+  "ranking_intro": "Check the participant ranking."
+}

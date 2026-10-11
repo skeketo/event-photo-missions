@@ -24,6 +24,7 @@ from services.admin_uploads import (
 )
 from services.cards import generate_cards_pdf, generate_cards_pdf_a4
 from services.config import get_setting, get_config, save_config, ALLOWED_EVENT_TYPES
+from services.i18n import SUPPORTED_LANGUAGES, language_context
 from services.front_cover import generate_front_cover
 from services.auth import (
     verify_login,
@@ -72,6 +73,7 @@ def admin_login_get(request: Request, error: str = ""):
         name="admin/login.html",
         context={
             "app_name": get_setting("APP_NAME", "Event Photo Missions"),
+            "twofa_enabled": bool(admin_2fa_secret().strip()),
             "error": error,
         },
     )
@@ -561,6 +563,7 @@ def admin_configuracion(request: Request):
             "app_name": get_setting("APP_NAME", "Event Photo Missions"),
             "config": config,
             "event_types": ALLOWED_EVENT_TYPES,
+            "supported_languages": SUPPORTED_LANGUAGES,
         },
     )
 
@@ -571,6 +574,7 @@ async def admin_configuracion_guardar(
     APP_NAME: str = Form(...),
     EVENT_DATE: str = Form(""),
     PUBLIC_BASE_URL: str = Form(""),
+    APP_LANGUAGE: str = Form("es"),
     EVENT_TYPE: str = Form("custom"),
     EVENT_HOSTS: str = Form(""),
     EVENT_LABEL: str = Form(""),
@@ -586,6 +590,7 @@ async def admin_configuracion_guardar(
         "APP_NAME": APP_NAME,
         "EVENT_DATE": EVENT_DATE,
         "PUBLIC_BASE_URL": PUBLIC_BASE_URL,
+        "APP_LANGUAGE": APP_LANGUAGE,
         "EVENT_TYPE": EVENT_TYPE,
         "EVENT_HOSTS": EVENT_HOSTS,
         "EVENT_LABEL": EVENT_LABEL,

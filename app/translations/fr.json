@@ -1,0 +1,51 @@
+{
+  "app_public_tagline": "Jeu photo de l'événement",
+  "home_title": "Partagez les meilleurs souvenirs",
+  "home_intro": "Recherchez votre nom, découvrez vos missions et envoyez des photos ou vidéos pendant l'événement.",
+  "home_find_missions": "Voir les missions",
+  "home_upload": "Envoyer une photo ou vidéo",
+  "home_ranking": "Voir le classement",
+
+  "admin_login_tag": "Espace privé",
+  "admin_login_title": "Connexion admin",
+  "admin_login_intro_basic": "Saisissez votre nom d'utilisateur et votre mot de passe.",
+  "admin_login_intro_2fa": "Saisissez votre nom d'utilisateur, votre mot de passe et le code 2FA.",
+  "admin_login_username": "Utilisateur",
+  "admin_login_password": "Mot de passe",
+  "admin_login_2fa": "Code 2FA",
+  "admin_login_button": "Se connecter",
+  "admin_back_public": "Retour au site public",
+
+  "admin_dashboard_title": "Tableau de bord admin",
+  "admin_dashboard_intro": "Gérez la configuration, les invités, les missions, les affectations, les envois, le classement et les cartes.",
+  "admin_config": "Configuration",
+  "admin_guests": "Invités",
+  "admin_missions": "Missions",
+  "admin_assignments": "Affectations",
+  "admin_uploads": "Envois",
+  "admin_cards": "Cartes / PDFs",
+  "admin_logout": "Se déconnecter",
+
+  "config_title": "Configuration de l'événement",
+  "config_intro": "Personnalisez l'événement, la langue, l'URL publique, le texte légal et le prix.",
+  "config_language": "Langue",
+  "config_save": "Enregistrer la configuration",
+
+  "missions_search_title": "Trouvez vos missions",
+  "missions_search_intro": "Saisissez votre nom, alias ou code pour voir vos missions assignées.",
+  "missions_search_placeholder": "Nom, alias ou code",
+  "missions_search_button": "Rechercher",
+
+  "upload_title": "Envoyer une photo ou vidéo",
+  "upload_guest": "Participant",
+  "upload_mission": "Mission",
+  "upload_file": "Fichier",
+  "upload_button": "Envoyer le fichier",
+  "upload_success_title": "Fichier reçu",
+  "upload_success_intro": "Votre photo ou vidéo a été enregistrée correctement.",
+  "uploads_closed_title": "Envois fermés",
+  "uploads_closed_intro": "Les envois ne sont pas encore ouverts.",
+
+  "ranking_title": "Classement",
+  "ranking_intro": "Consultez le classement des participants."
+}

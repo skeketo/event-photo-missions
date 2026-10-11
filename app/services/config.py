@@ -23,6 +23,7 @@ DEFAULT_CONFIG = {
     "PRIZE_TEXT": "el premio indicado por los organizadores",
     "LEGAL_TEXT": "Al subir fotos o vídeos aceptas compartirlos con los organizadores para uso privado como recuerdo del evento.",
     "PUBLIC_BASE_URL": "http://localhost:8093",
+    "APP_LANGUAGE": "es",
 }
 
 
