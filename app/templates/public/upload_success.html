@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Foto recibida - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <div class="tag">Recuerdo recibido</div>
+
+      <h1>¡Foto recibida!</h1>
+
+      <p class="intro">
+        Gracias por compartir este recuerdo con los organizadores del evento.
+      </p>
+
+      <p class="intro">
+        Tu archivo se ha guardado correctamente y ya cuenta para el juego de misiones.
+      </p>
+
+      <div class="buttons">
+        <a href="/subir?guest_id={{ guest_id }}" class="btn primary">Subir otra foto o vídeo</a>
+        <a href="/misiones/{{ guest_id }}" class="btn">Ver misiones</a>
+        <a href="/ranking" class="btn">Ver ranking</a>
+      </div>
+
+      <p class="intro small">
+        Consejo: las fotos espontáneas, los abrazos, las risas y los pequeños detalles suelen ser los mejores recuerdos.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

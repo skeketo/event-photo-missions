@@ -1,0 +1,440 @@
+:root {
+  --bg: #f8f1e8;
+  --card: #fffaf3;
+  --text: #4a3328;
+  --muted: #7c665c;
+  --accent: #b9846f;
+  --accent-dark: #8f5d4b;
+  --border: #ead8c7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, #f3d9cf 0, transparent 28%),
+    radial-gradient(circle at bottom right, #dbe7d1 0, transparent 30%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 250, 243, 0.95);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(74, 51, 40, 0.12);
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f1dfd3;
+  color: var(--accent-dark);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 2.4rem;
+  line-height: 1.05;
+}
+
+.intro {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0 0 28px;
+}
+
+.buttons {
+  display: grid;
+  gap: 12px;
+}
+
+.btn {
+  display: block;
+  text-decoration: none;
+  color: var(--accent-dark);
+  border: 1px solid var(--accent);
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-weight: 700;
+  background: #fff;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.footer {
+  margin: 26px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.stats div {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.stats strong {
+  display: block;
+  font-size: 2rem;
+  color: var(--accent-dark);
+}
+
+.stats span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.page.wide {
+  align-items: flex-start;
+}
+
+.wide-card {
+  max-width: 980px;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+input, textarea, select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 13px 14px;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 120px;
+  gap: 12px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 24px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+th, td {
+  text-align: left;
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  background: #f1dfd3;
+  color: var(--accent-dark);
+}
+
+td small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+code {
+  background: #f1dfd3;
+  color: var(--accent-dark);
+  padding: 4px 7px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.mini-danger {
+  border: 0;
+  background: #b85050;
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.intro.small {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+h2 {
+  margin: 12px 0 4px;
+  font-size: 1.25rem;
+}
+
+.sep {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+.assignments {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.assignment-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 18px;
+  text-align: left;
+}
+
+.assignment-card h2 {
+  margin-top: 0;
+}
+
+.assignment-card ol {
+  margin-bottom: 0;
+  padding-left: 22px;
+}
+
+.assignment-card li {
+  margin-bottom: 10px;
+}
+
+.assignment-card small {
+  display: block;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.meta {
+  color: var(--muted);
+  margin-top: -4px;
+}
+
+.results {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.result-card {
+  display: grid;
+  gap: 4px;
+  text-align: left;
+  text-decoration: none;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.result-card span {
+  color: var(--muted);
+}
+
+.mission-list {
+  display: grid;
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.mission-card {
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.mission-card strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.mission-card small {
+  display: block;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.mission-card em {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--accent-dark);
+  font-style: normal;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.alert {
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin: 16px 0;
+  font-weight: 700;
+}
+
+.alert.error {
+  background: #ffe1e1;
+  color: #9f3030;
+  border: 1px solid #e6aaaa;
+}
+
+.ranking-list {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.ranking-card {
+  display: grid;
+  grid-template-columns: 48px 1fr 90px;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  text-align: left;
+}
+
+.ranking-card.winner {
+  border-color: var(--accent);
+  background: #fff6ee;
+}
+
+.rank-number {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: #f1dfd3;
+  color: var(--accent-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.rank-info strong,
+.rank-points strong {
+  display: block;
+}
+
+.rank-info span,
+.rank-points span,
+.rank-detail {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.rank-points {
+  text-align: right;
+}
+
+.rank-detail {
+  grid-column: 2 / 4;
+}
+
+@media (max-width: 700px) {
+  .ranking-card {
+    grid-template-columns: 42px 1fr;
+  }
+
+  .rank-points {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .rank-detail {
+    grid-column: 2;
+  }
+}
+
+.mini-btn {
+  border: 1px solid var(--accent);
+  background: #fff;
+  color: var(--accent-dark);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qr-box {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 18px;
+  margin: 22px auto;
+  max-width: 280px;
+}
+
+.qr-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Subir foto o vídeo - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <div class="tag">Subir recuerdo</div>
+
+      <h1>Sube tu foto o vídeo</h1>
+
+      {% if guest %}
+        <p class="intro">
+          Hola, <strong>{{ guest.alias or guest.name }}</strong>.
+          Elige una misión y sube tu foto o vídeo.
+        </p>
+
+        {% if error %}
+          <p class="alert error">{{ error }}</p>
+        {% endif %}
+
+        <form method="post" action="/subir" enctype="multipart/form-data" class="form">
+          <input type="hidden" name="guest_id" value="{{ guest.id }}">
+
+          <select name="mission_id">
+            <option value="">Subida libre, sin misión concreta</option>
+            {% for m in missions %}
+              <option value="{{ m.id }}">
+                {{ m.title }}
+              </option>
+            {% endfor %}
+          </select>
+
+          <input type="file" name="file" accept=".jpg,.jpeg,.png,.webp,.heic,.mp4,.mov,image/*,video/*" required>
+
+          <textarea name="comment" placeholder="Comentario opcional"></textarea>
+
+          <button class="btn primary" type="submit">Subir archivo</button>
+
+          <p class="intro small" style="margin-top: 10px;">
+            {{ legal_text }}
+          </p>
+
+        </form>
+
+        <div class="buttons">
+          <a href="/misiones/{{ guest.id }}" class="btn">Ver misiones</a>
+          <a href="/" class="btn">Volver al inicio</a>
+        </div>
+      {% else %}
+        <p class="intro">
+          Primero busca tu nombre para asociar la foto a tus misiones.
+        </p>
+
+        <div class="buttons">
+          <a href="/misiones" class="btn primary">Buscar misiones</a>
+          <a href="/" class="btn">Volver al inicio</a>
+        </div>
+      {% endif %}
+    </section>
+  </main>
+</body>
+</html>

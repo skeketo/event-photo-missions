@@ -1,0 +1,15 @@
+.env
+data/
+uploads/
+exports/
+cards/
+backups/
+scripts/
+*.tar.gz
+*.zip
+__pycache__/
+*.pyc
+*.pyo
+*.bak*
+app/**/*.bak*
+app/**/__pycache__/

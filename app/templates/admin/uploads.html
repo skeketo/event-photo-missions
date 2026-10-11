@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Subidas - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="page wide">
+    <section class="card wide-card">
+      <div class="tag">Panel admin</div>
+
+      <h1>Fotos y vídeos subidos</h1>
+
+      <p class="intro">
+        Revisa las subidas recibidas y descarga todos los archivos en ZIP.
+      </p>
+
+      <div class="buttons">
+        <a href="/admin/exportar/todo.zip" class="btn primary">Descargar todo en ZIP</a>
+        <a href="/admin/exportar/favoritas.zip" class="btn">Descargar favoritas</a>
+        <a href="/admin/exportar/ranking.csv" class="btn">Exportar ranking CSV</a>
+        <a href="/admin" class="btn">Volver al panel</a>
+      </div>
+
+      <form method="get" action="/admin/exportar/invitado" class="form">
+        <h2>Descargar por invitado</h2>
+        <select name="guest_id" required>
+          <option value="">Selecciona invitado</option>
+          {% for g in guests %}
+            <option value="{{ g.id }}">{{ g.alias or g.name }} - {{ g.name }} {{ g.surname or "" }}</option>
+          {% endfor %}
+        </select>
+        <button class="btn" type="submit">Descargar ZIP del invitado</button>
+      </form>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Archivo</th>
+              <th>Invitado</th>
+              <th>Misión</th>
+              <th>Tipo</th>
+              <th>Puntos</th>
+              <th>Fecha</th>
+              <th>Favorita</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for u in uploads %}
+            <tr>
+              <td>
+                <strong>{{ u.original_filename }}</strong>
+                {% if u.comment %}
+                  <small>{{ u.comment }}</small>
+                {% endif %}
+              </td>
+              <td>{{ u.alias or u.name }}</td>
+              <td>{{ u.mission_title or "Subida libre" }}</td>
+              <td>{{ u.file_type }}</td>
+              <td>{{ u.points }}</td>
+              <td>{{ u.uploaded_at }}</td>
+              <td>
+                <form method="post" action="/admin/subidas/{{ u.id }}/favorita">
+                  <button class="mini-btn" type="submit">
+                    {% if u.favorite %}★ Sí{% else %}☆ No{% endif %}
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="7">Todavía no hay fotos ni vídeos subidos.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

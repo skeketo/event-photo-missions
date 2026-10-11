@@ -1,0 +1,32 @@
+services:
+  event-photo-missions:
+    image: event-photo-missions:latest
+    container_name: event-photo-missions
+    restart: unless-stopped
+    ports:
+      - "8093:8000"
+    environment:
+      APP_NAME: "Event Photo Missions"
+      EVENT_DATE: "Event date"
+      PUBLIC_BASE_URL: "http://localhost:8093"
+      ADMIN_USER: "admin"
+      ADMIN_PASSWORD: "change-me"
+      SECRET_KEY: "change-this-secret-key"
+      ADMIN_2FA_SECRET: ""
+      UPLOAD_MAX_MB: "500"
+      MISSIONS_PER_GUEST: "8"
+      UPLOADS_OPEN_AT: ""
+      TIMEZONE: "Europe/Madrid"
+      DATABASE_URL: "sqlite:///data/event_photo_missions.db"
+      EVENT_TYPE: "wedding"
+      EVENT_HOSTS: "the hosts"
+      EVENT_LABEL: "event"
+      PROTAGONISTS_LABEL: "protagonists"
+      PRIZE_TEXT: "the prize defined by the organizers"
+      LEGAL_TEXT: "By uploading photos or videos you agree to share them with the organizers for private event memories."
+    volumes:
+      - /mnt/user/appdata/event-photo-missions/data:/app/data
+      - /mnt/user/appdata/event-photo-missions/uploads:/app/uploads
+      - /mnt/user/appdata/event-photo-missions/exports:/app/exports
+      - /mnt/user/appdata/event-photo-missions/cards:/app/cards
+      - /mnt/user/appdata/event-photo-missions/assets:/app/assets

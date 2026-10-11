@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Configuración - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <style>
+    .config-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .config-grid label {
+      display: grid;
+      gap: 6px;
+      font-weight: 700;
+      color: #4f372c;
+    }
+
+    .config-grid small {
+      font-weight: 400;
+      color: #7e685e;
+    }
+
+    .config-note {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(191, 138, 114, 0.12);
+      color: #7e685e;
+      line-height: 1.45;
+    }
+
+    .config-warning {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(185, 74, 72, 0.10);
+      color: #7a332f;
+      line-height: 1.45;
+    }
+
+    textarea {
+      min-height: 90px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page wide">
+    <section class="card wide-card">
+      <div class="tag">Panel admin</div>
+
+      <h1>Configuración del evento</h1>
+
+      <p class="intro">
+        Personaliza la app para distintos tipos de evento sin tocar archivos por consola.
+      </p>
+
+      <div class="config-note">
+        Los cambios se guardan en <code>/app/data/app_config.json</code>.
+        Si cambias el tipo de evento, después puedes ir a <strong>Misiones</strong> y recargar el banco.
+      </div>
+
+      <form method="post" action="/admin/configuracion" class="form">
+        <div class="config-grid">
+          <label>
+            Nombre de la app
+            <input name="APP_NAME" value="{{ config.APP_NAME }}" required>
+            <small>Ejemplo: Event Photo Missions</small>
+          </label>
+
+          <label>
+            Fecha o texto de fecha
+            <input name="EVENT_DATE" value="{{ config.EVENT_DATE }}">
+            <small>Ejemplo: 12/12/2026 o “Próximamente”</small>
+          </label>
+
+          <label>
+            URL pública
+            <input name="PUBLIC_BASE_URL" value="{{ config.PUBLIC_BASE_URL }}">
+            <small>Ejemplo: https://fotos.midominio.com</small>
+          </label>
+
+          <label>
+            Tipo de evento
+            <select name="EVENT_TYPE">
+              {% for item in event_types %}
+                <option value="{{ item }}" {% if config.EVENT_TYPE == item %}selected{% endif %}>{{ item }}</option>
+              {% endfor %}
+            </select>
+            <small>wedding, birthday, company, party, communion o custom</small>
+          </label>
+
+          <label>
+            Organizadores/protagonistas
+            <input name="EVENT_HOSTS" value="{{ config.EVENT_HOSTS }}">
+            <small>Ejemplo: los novios, Antonio, el equipo comercial...</small>
+          </label>
+
+          <label>
+            Etiqueta del evento
+            <input name="EVENT_LABEL" value="{{ config.EVENT_LABEL }}">
+            <small>Ejemplo: boda, cumpleaños, evento de empresa, fiesta...</small>
+          </label>
+
+          <label>
+            Etiqueta de protagonistas
+            <input name="PROTAGONISTS_LABEL" value="{{ config.PROTAGONISTS_LABEL }}">
+            <small>Ejemplo: novios, cumpleañero, equipo, protagonistas...</small>
+          </label>
+
+          <label>
+            Texto del premio
+            <input name="PRIZE_TEXT" value="{{ config.PRIZE_TEXT }}">
+            <small>Ejemplo: un premio especial para el ganador</small>
+          </label>
+
+          <label>
+            Texto legal
+            <textarea name="LEGAL_TEXT">{{ config.LEGAL_TEXT }}</textarea>
+          </label>
+        </div>
+
+        <div class="buttons">
+          <button class="btn primary" type="submit">Guardar configuración</button>
+          <a href="/admin/misiones" class="btn">Ir a misiones</a>
+          <a href="/admin" class="btn">Volver al panel</a>
+        </div>
+      </form>
+
+      <div class="config-warning">
+        Cambiar el tipo de evento no modifica automáticamente las misiones ya cargadas.
+        Para aplicar el nuevo banco, entra en <strong>Misiones</strong> y pulsa recargar banco.
+      </div>
+    </section>
+  </main>
+</body>
+</html>

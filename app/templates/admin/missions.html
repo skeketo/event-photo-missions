@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Misiones - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <style>
+    .event-config-box {
+      margin: 18px 0 24px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(191, 138, 114, 0.12);
+      border: 1px solid rgba(160, 93, 65, 0.20);
+    }
+
+    .event-config-box h2 {
+      margin-top: 0;
+      color: #4f372c;
+    }
+
+    .warning-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(185, 74, 72, 0.10);
+      color: #7a332f;
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+  </style>
+
+</head>
+<body>
+  <main class="page wide">
+    <section class="card wide-card">
+      <div class="tag">Panel admin</div>
+      <h1>Misiones</h1>
+
+      <div class="event-config-box">
+        <h2>Configuración actual</h2>
+        <p>
+          <strong>Tipo de evento:</strong> {{ event_type }}<br>
+          <strong>Organizadores/protagonistas:</strong> {{ event_hosts }}<br>
+          <strong>Etiqueta del evento:</strong> {{ event_label }}
+        </p>
+
+        <p class="intro small">
+          Tipos disponibles: <code>wedding</code>, <code>birthday</code>, <code>company</code>,
+          <code>party</code>, <code>communion</code> y <code>custom</code>.
+        </p>
+
+        <p class="warning-box">
+          Para cambiar el tipo de evento, modifica <code>EVENT_TYPE</code> en el archivo <code>.env</code>
+          y después recarga el banco de misiones. Recargar el banco borra las misiones actuales y sus asignaciones.
+        </p>
+      </div>
+
+
+      <form method="post" action="/admin/misiones/crear" class="form">
+        <input name="title" placeholder="Título de la misión" required>
+        <textarea name="description" placeholder="Descripción"></textarea>
+
+        <div class="grid-3">
+          <select name="category" required>
+            <option value="novios">Novios</option>
+            <option value="familia">Familia</option>
+            <option value="fiesta">Fiesta</option>
+            <option value="emotiva">Emotiva</option>
+            <option value="detalles">Detalles</option>
+            <option value="divertida">Divertida</option>
+            <option value="brindis">Brindis</option>
+            <option value="bonus">Bonus</option>
+          </select>
+
+          <select name="mission_type" required>
+            <option value="foto">Foto</option>
+            <option value="video">Vídeo</option>
+            <option value="bonus">Bonus</option>
+          </select>
+
+          <input name="base_points" type="number" min="1" max="20" value="3">
+        </div>
+
+        <button class="btn primary" type="submit">Añadir misión</button>
+      </form>
+
+      <div class="buttons">
+        <form method="post" action="/admin/misiones/cargar-ejemplo">
+          <button class="btn" type="submit">Cargar misiones si está vacío</button>
+        </form>
+
+
+        <form method="post" action="/admin/misiones/recargar-banco" onsubmit="return confirm('Esto borrará las misiones actuales y sus asignaciones. Se cargará el banco correspondiente al tipo de evento actual. ¿Continuar?');">
+          <button class="btn primary" type="submit">Recargar banco según tipo de evento</button>
+        </form>
+
+        <a href="/admin" class="btn">Volver al panel</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Misión</th>
+              <th>Categoría</th>
+              <th>Tipo</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for m in missions %}
+            <tr>
+              <td>
+                <strong>{{ m.title }}</strong>
+                {% if m.description %}
+                <small>{{ m.description }}</small>
+                {% endif %}
+              </td>
+              <td>{{ m.category }}</td>
+              <td>{{ m.mission_type }}</td>
+              <td>{{ m.base_points }}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="4">Todavía no hay misiones.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

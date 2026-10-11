@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Misiones de {{ guest.alias or guest.name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="page wide">
+    <section class="card wide-card">
+      <div class="tag">Fotógrafo oficial por un día</div>
+
+      <h1>{{ guest.alias or guest.name }}</h1>
+
+      <p class="intro">
+        Estas son tus misiones. Completa todas las que puedas y sube tus fotos o vídeos usando el botón inferior.
+      </p>
+
+      <div class="mission-list">
+        {% for m in missions %}
+          <div class="mission-card">
+            <div>
+              <strong>{{ loop.index }}. {{ m.title }}</strong>
+              {% if m.description %}
+                <small>{{ m.description }}</small>
+              {% endif %}
+              <em>{{ m.category }} · {{ m.mission_type }} · {{ m.base_points }} puntos</em>
+            </div>
+          </div>
+        {% else %}
+          <p class="intro">
+            Todavía no tienes misiones asignadas.
+          </p>
+        {% endfor %}
+      </div>
+
+      <div class="buttons">
+        <a href="/subir?guest_id={{ guest.id }}" class="btn primary">Subir foto o vídeo</a>
+        <a href="/misiones" class="btn">Buscar otro invitado</a>
+        <a href="/" class="btn">Volver al inicio</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Event-Photo-Missions</Name>
+  <Repository>event-photo-missions:latest</Repository>
+  <Registry>https://hub.docker.com/</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+
+  <Support>https://github.com/YOUR_USERNAME/event-photo-missions/issues</Support>
+  <Project>https://github.com/YOUR_USERNAME/event-photo-missions</Project>
+  <Overview>Self-hosted photo and video mission game for weddings, birthdays, company events, parties and private celebrations.</Overview>
+  <Category>Productivity: MediaApp: Other:</Category>
+  <WebUI>http://[IP]:[PORT:8000]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/YOUR_USERNAME/unraid-event-photo-missions/main/templates/event-photo-missions.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/YOUR_USERNAME/unraid-event-photo-missions/main/icon.png</Icon>
+
+  <Config Name="WebUI Port" Target="8000" Default="8093" Mode="tcp" Description="Web interface port" Type="Port" Display="always" Required="true" Mask="false">8093</Config>
+
+  <Config Name="Data" Target="/app/data" Default="/mnt/user/appdata/event-photo-missions/data" Mode="rw" Description="Database and configuration files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/event-photo-missions/data</Config>
+  <Config Name="Uploads" Target="/app/uploads" Default="/mnt/user/appdata/event-photo-missions/uploads" Mode="rw" Description="Uploaded photos and videos" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/event-photo-missions/uploads</Config>
+  <Config Name="Exports" Target="/app/exports" Default="/mnt/user/appdata/event-photo-missions/exports" Mode="rw" Description="Generated ZIP and CSV exports" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/event-photo-missions/exports</Config>
+  <Config Name="Cards" Target="/app/cards" Default="/mnt/user/appdata/event-photo-missions/cards" Mode="rw" Description="Generated PDF cards" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/event-photo-missions/cards</Config>
+  <Config Name="Assets" Target="/app/assets" Default="/mnt/user/appdata/event-photo-missions/assets" Mode="rw" Description="Generated cover images and assets" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/event-photo-missions/assets</Config>
+
+  <Config Name="APP_NAME" Target="APP_NAME" Default="Event Photo Missions" Description="Application name" Type="Variable" Display="always" Required="true" Mask="false">Event Photo Missions</Config>
+  <Config Name="EVENT_DATE" Target="EVENT_DATE" Default="Event date" Description="Event date text" Type="Variable" Display="always" Required="false" Mask="false">Event date</Config>
+  <Config Name="PUBLIC_BASE_URL" Target="PUBLIC_BASE_URL" Default="http://localhost:8093" Description="Public URL used for QR codes" Type="Variable" Display="always" Required="true" Mask="false">http://localhost:8093</Config>
+
+  <Config Name="ADMIN_USER" Target="ADMIN_USER" Default="admin" Description="Admin username" Type="Variable" Display="always" Required="true" Mask="false">admin</Config>
+  <Config Name="ADMIN_PASSWORD" Target="ADMIN_PASSWORD" Default="" Description="Admin password" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="SECRET_KEY" Target="SECRET_KEY" Default="" Description="Session secret key" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="ADMIN_2FA_SECRET" Target="ADMIN_2FA_SECRET" Default="" Description="TOTP secret for admin 2FA" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+
+  <Config Name="UPLOAD_MAX_MB" Target="UPLOAD_MAX_MB" Default="500" Description="Maximum upload size in MB" Type="Variable" Display="always" Required="true" Mask="false">500</Config>
+  <Config Name="MISSIONS_PER_GUEST" Target="MISSIONS_PER_GUEST" Default="8" Description="Number of missions per guest" Type="Variable" Display="always" Required="true" Mask="false">8</Config>
+  <Config Name="UPLOADS_OPEN_AT" Target="UPLOADS_OPEN_AT" Default="" Description="Upload opening date, for example 2026-10-24T10:00:00" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="TIMEZONE" Target="TIMEZONE" Default="Europe/Madrid" Description="Timezone" Type="Variable" Display="always" Required="true" Mask="false">Europe/Madrid</Config>
+  <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="sqlite:///data/event_photo_missions.db" Description="Database URL" Type="Variable" Display="advanced" Required="true" Mask="false">sqlite:///data/event_photo_missions.db</Config>
+
+  <Config Name="EVENT_TYPE" Target="EVENT_TYPE" Default="wedding" Description="Initial event type: wedding, birthday, company, party, communion or custom" Type="Variable" Display="always" Required="true" Mask="false">wedding</Config>
+  <Config Name="EVENT_HOSTS" Target="EVENT_HOSTS" Default="the hosts" Description="Hosts or protagonists text" Type="Variable" Display="always" Required="false" Mask="false">the hosts</Config>
+  <Config Name="EVENT_LABEL" Target="EVENT_LABEL" Default="event" Description="Event label" Type="Variable" Display="always" Required="false" Mask="false">event</Config>
+  <Config Name="PROTAGONISTS_LABEL" Target="PROTAGONISTS_LABEL" Default="protagonists" Description="Protagonists label" Type="Variable" Display="always" Required="false" Mask="false">protagonists</Config>
+  <Config Name="PRIZE_TEXT" Target="PRIZE_TEXT" Default="the prize defined by the organizers" Description="Prize text shown on cards" Type="Variable" Display="always" Required="false" Mask="false">the prize defined by the organizers</Config>
+  <Config Name="LEGAL_TEXT" Target="LEGAL_TEXT" Default="By uploading photos or videos you agree to share them with the organizers for private event memories." Description="Legal text shown on upload page" Type="Variable" Display="always" Required="false" Mask="false">By uploading photos or videos you agree to share them with the organizers for private event memories.</Config>
+</Container>

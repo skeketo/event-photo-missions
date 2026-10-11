@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Asignaciones - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="page wide">
+    <section class="card wide-card">
+      <div class="tag">Panel admin</div>
+      <h1>Asignación de misiones</h1>
+
+      <p class="intro">
+        Genera automáticamente 8 misiones por invitado, repartidas por categorías.
+      </p>
+
+      <form method="post" action="/admin/asignaciones/generar"
+            onsubmit="return confirm('Esto borrará las asignaciones actuales y generará nuevas. ¿Continuar?');">
+        <button class="btn primary" type="submit">Generar asignaciones automáticas</button>
+      </form>
+
+      <div class="buttons">
+        <a href="/admin" class="btn">Volver al panel</a>
+      </div>
+
+      <div class="assignments">
+        {% for item in assignments %}
+          <div class="assignment-card">
+            <h2>{{ item.guest.alias or item.guest.name }}</h2>
+            <p class="meta">
+              {{ item.guest.name }} {{ item.guest.surname or "" }}
+              {% if item.guest.table_name %} · {{ item.guest.table_name }}{% endif %}
+              {% if item.guest.group_name %} · {{ item.guest.group_name }}{% endif %}
+            </p>
+
+            {% if item.missions %}
+              <ol>
+                {% for m in item.missions %}
+                  <li>
+                    <strong>{{ m.title }}</strong>
+                    <small>{{ m.category }} · {{ m.mission_type }}</small>
+                  </li>
+                {% endfor %}
+              </ol>
+            {% else %}
+              <p class="intro small">Sin misiones asignadas todavía.</p>
+            {% endif %}
+          </div>
+        {% else %}
+          <p class="intro">Todavía no hay invitados.</p>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+</body>
+</html>

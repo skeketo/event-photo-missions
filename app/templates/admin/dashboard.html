@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Admin - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <div class="tag">Panel admin</div>
+
+      <h1>{{ app_name }}</h1>
+
+      <p class="intro">
+        Estado general del juego de fotos.
+      </p>
+
+      <div class="stats">
+        <div><strong>{{ stats.guests }}</strong><span>Invitados</span></div>
+        <div><strong>{{ stats.missions }}</strong><span>Misiones</span></div>
+        <div><strong>{{ stats.uploads }}</strong><span>Subidas</span></div>
+        <div><strong>{{ stats.completed }}</strong><span>Completadas</span></div>
+      </div>
+
+      <div class="buttons">
+        <a href="/admin/configuracion" class="btn primary">Configuración</a>
+        <a href="/admin/invitados" class="btn">Gestionar invitados</a>
+        <a href="/admin/misiones" class="btn">Gestionar misiones</a>
+        <a href="/admin/asignaciones" class="btn">Asignar misiones</a>
+        <a href="/admin/subidas" class="btn">Ver subidas</a>
+        <a href="/admin/tarjetas" class="btn">Tarjetas / PDFs</a>
+        <a href="/admin/logout" class="btn">Cerrar sesión</a>
+        <a href="/" class="btn primary">Ver web pública</a>
+      </div>
+
+      <p class="footer">
+        Última actualización: {{ stats.now }}
+      </p>
+    </section>
+  </main>
+</body>
+</html>

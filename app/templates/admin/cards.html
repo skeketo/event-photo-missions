@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Tarjetas - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <style>
+    .cards-admin {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cards-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 28px 0 22px;
+    }
+
+    .cards-option {
+      border: 1px solid rgba(160, 93, 65, 0.22);
+      border-radius: 22px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.68);
+      box-shadow: 0 10px 24px rgba(79, 55, 44, 0.06);
+    }
+
+    .cards-option h2 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      color: #4f372c;
+    }
+
+    .cards-option p {
+      margin: 0 0 16px;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: #7e685e;
+    }
+
+    .cards-option form {
+      margin: 0 0 10px;
+    }
+
+    .cards-option .btn,
+    .cards-option button.btn,
+    .cards-actions .btn {
+      width: 100%;
+      display: block;
+      box-sizing: border-box;
+      text-align: center;
+      margin: 0;
+    }
+
+    .cards-actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .print-note {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(191, 138, 114, 0.12);
+      color: #7e685e;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .print-note strong {
+      color: #4f372c;
+    }
+
+    @media (max-width: 720px) {
+      .cards-options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card cards-admin">
+      <div class="tag">Panel admin</div>
+
+      <h1>Tarjetas</h1>
+
+      <p class="intro">
+        Genera las tarjetas del evento en formato individual o preparadas para imprimir en A4 y cortar.
+      </p>
+
+      <div class="cards-options">
+        <div class="cards-option">
+          <h2>PDF A6 individual</h2>
+          <p>
+            Una tarjeta por página. Útil si vas a imprimir directamente en tamaño A6.
+          </p>
+
+          <form method="post" action="/admin/tarjetas/generar">
+            <button class="btn primary" type="submit">Generar PDF A6</button>
+          </form>
+
+          <a href="/admin/tarjetas/descargar" class="btn">Descargar último A6</a>
+        </div>
+
+        <div class="cards-option">
+          <h2>PDF A4 para cortar</h2>
+          <p>
+            Cuatro tarjetas A6 por hoja A4, preparado para doble cara y corte con guillotina.
+          </p>
+
+          <form method="post" action="/admin/tarjetas/generar-a4">
+            <button class="btn primary" type="submit">Generar PDF A4</button>
+          </form>
+
+          <a href="/admin/tarjetas/descargar-a4" class="btn">Descargar último A4</a>
+        </div>
+      </div>
+
+      <div class="cards-actions">
+        <a href="/admin" class="btn">Volver al panel</a>
+      </div>
+
+      <div class="print-note">
+        <strong>Recomendado para imprimir:</strong><br>
+        Usa el PDF A4. Imprime en A4 vertical, escala 100 %, doble cara y giro por borde largo.
+        Después corta por la mitad vertical y horizontal.
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Invitados - {{ app_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .guest-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .guest-edit-card {
+      border: 1px solid rgba(160, 93, 65, 0.25);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .guest-edit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .guest-code {
+      font-size: 0.8rem;
+      background: #ecd8cc;
+      color: #9c5b3f;
+      border-radius: 8px;
+      padding: 5px 8px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .guest-edit-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .guest-edit-grid label {
+      display: grid;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #9c5b3f;
+    }
+
+    .guest-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .guest-actions form {
+      margin: 0;
+    }
+
+    .mini-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 9px 16px;
+      background: #9c5b3f;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .mini-danger {
+      border: 1px solid #b94a48;
+      border-radius: 999px;
+      padding: 9px 16px;
+      background: white;
+      color: #b94a48;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .guest-edit-grid {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .guest-edit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .guest-actions {
+        flex-direction: column;
+      }
+
+      .mini-btn,
+      .mini-danger {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page wide">
+    <section class="card wide-card">
+      <div class="tag">Panel admin</div>
+      <h1>Invitados</h1>
+
+      <p class="intro">
+        Añade o modifica los invitados que participarán en el juego de fotos.
+        El campo “Nombre en la tarjeta” será el que aparecerá en el PDF.
+      </p>
+
+      <form method="post" action="/admin/invitados/crear" class="form">
+        <h2>Añadir invitado manualmente</h2>
+
+        <div class="grid-2">
+          <input name="name" placeholder="Nombre" required>
+          <input name="surname" placeholder="Apellidos">
+        </div>
+
+        <div class="grid-3">
+          <input name="alias" placeholder="Nombre en la tarjeta">
+          <input name="table_name" placeholder="Zona: Cóctel / Mesa mayores">
+          <input name="group_name" placeholder="Grupo: Familia / Amigos / Trabajo">
+        </div>
+
+        <button class="btn primary" type="submit">Añadir invitado</button>
+      </form>
+
+      <hr class="sep">
+
+      <form method="post" action="/admin/invitados/importar" enctype="multipart/form-data" class="form">
+        <h2>Importar invitados desde CSV</h2>
+
+        <p class="intro small">
+          El CSV debe tener estas columnas: nombre, apellidos, alias, zona, grupo. Acepta separador coma o punto y coma.
+        </p>
+
+        <input type="file" name="file" accept=".csv" required>
+
+        <button class="btn" type="submit">Importar CSV</button>
+      </form>
+
+      <div class="buttons">
+        <a href="/admin" class="btn">Volver al panel</a>
+      </div>
+
+      <div class="guest-list">
+        {% for g in guests %}
+        <div class="guest-edit-card">
+          <div class="guest-edit-header">
+            <strong>{{ g.name }} {{ g.surname or "" }}</strong>
+            <code class="guest-code">{{ g.code }}</code>
+          </div>
+
+          <form method="post" action="/admin/invitados/{{ g.id }}/editar">
+            <div class="guest-edit-grid">
+              <label>
+                Nombre
+                <input name="name" value="{{ g.name or '' }}" required>
+              </label>
+
+              <label>
+                Apellidos
+                <input name="surname" value="{{ g.surname or '' }}">
+              </label>
+
+              <label>
+                Nombre en la tarjeta
+                <input name="alias" value="{{ g.alias or '' }}" placeholder="{{ g.name }}">
+              </label>
+
+              <label>
+                Zona
+                <input name="table_name" value="{{ g.table_name or '' }}">
+              </label>
+
+              <label>
+                Grupo
+                <input name="group_name" value="{{ g.group_name or '' }}">
+              </label>
+            </div>
+
+            <div class="guest-actions">
+              <button class="mini-btn" type="submit">Guardar cambios</button>
+          </form>
+
+              <form method="post" action="/admin/invitados/{{ g.id }}/borrar" onsubmit="return confirm('¿Borrar este invitado?');">
+                <button class="mini-danger" type="submit">Borrar invitado</button>
+              </form>
+            </div>
+        </div>
+        {% else %}
+        <p class="intro">Todavía no hay invitados.</p>
+        {% endfor %}
+      </div>
+
+      <p class="intro small">
+        Nota: si solo cambias nombres o alias, no hace falta regenerar asignaciones. Solo vuelve a generar el PDF de tarjetas.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
