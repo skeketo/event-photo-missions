@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="es">
+<html lang="{{ language|default('es') }}">
 <head>
   <meta charset="utf-8">
-  <title>Configuración - {{ app_name }}</title>
+  <title>{{ t("config_page_title") }} - {{ app_name }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/static/css/style.css">
 
@@ -51,12 +51,12 @@
 <body>
   <main class="page wide">
     <section class="card wide-card">
-      <div class="tag">Panel admin</div>
+      <div class="tag">{{ t("config_admin_tag") }}</div>
 
-      <h1>Configuración del evento</h1>
+      <h1>{{ t("config_title") }}</h1>
 
       <p class="intro">
-        Personaliza la app para distintos tipos de evento sin tocar archivos por consola.
+        {{ t("config_intro_detail") }}
       </p>
 
       <div class="config-note">
@@ -85,14 +85,14 @@
           </label>
 
                   <label>
-          Idioma de la aplicación
+          {{ t("config_language") }}
           <select name="APP_LANGUAGE">
             {% for code, label in supported_languages.items() %}
               <option value="{{ code }}" {% if config.APP_LANGUAGE == code %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
           </select>
         </label><label>
-            Tipo de evento
+            {{ t("config_event_type") }}
             <select name="EVENT_TYPE">
               {% for item in event_types %}
                 <option value="{{ item }}" {% if config.EVENT_TYPE == item %}selected{% endif %}>{{ item }}</option>
@@ -108,19 +108,19 @@
           </label>
 
           <label>
-            Etiqueta del evento
+            {{ t("config_event_label") }}
             <input name="EVENT_LABEL" value="{{ config.EVENT_LABEL }}">
             <small>Ejemplo: boda, cumpleaños, evento de empresa, fiesta...</small>
           </label>
 
           <label>
-            Etiqueta de protagonistas
+            {{ t("config_protagonists_label") }}
             <input name="PROTAGONISTS_LABEL" value="{{ config.PROTAGONISTS_LABEL }}">
             <small>Ejemplo: novios, cumpleañero, equipo, protagonistas...</small>
           </label>
 
           <label>
-            Texto del premio
+            {{ t("config_prize_text") }}
             <input name="PRIZE_TEXT" value="{{ config.PRIZE_TEXT }}">
             <small>Ejemplo: un premio especial para el ganador</small>
           </label>
@@ -132,9 +132,9 @@
         </div>
 
         <div class="buttons">
-          <button class="btn primary" type="submit">Guardar configuración</button>
-          <a href="/admin/misiones" class="btn">Ir a misiones</a>
-          <a href="/admin" class="btn">Volver al panel</a>
+          <button class="btn primary" type="submit">{{ t("config_save") }}</button>
+          <a href="/admin/misiones" class="btn">{{ t("config_go_missions") }}</a>
+          <a href="/admin" class="btn">{{ t("config_back_dashboard") }}</a>
         </div>
       </form>
 

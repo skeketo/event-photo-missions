@@ -5,7 +5,6 @@
   "home_find_missions": "Voir les missions",
   "home_upload": "Envoyer une photo ou vidéo",
   "home_ranking": "Voir le classement",
-
   "admin_login_tag": "Espace privé",
   "admin_login_title": "Connexion admin",
   "admin_login_intro_basic": "Saisissez votre nom d'utilisateur et votre mot de passe.",
@@ -15,7 +14,6 @@
   "admin_login_2fa": "Code 2FA",
   "admin_login_button": "Se connecter",
   "admin_back_public": "Retour au site public",
-
   "admin_dashboard_title": "Tableau de bord admin",
   "admin_dashboard_intro": "Gérez la configuration, les invités, les missions, les affectations, les envois, le classement et les cartes.",
   "admin_config": "Configuration",
@@ -25,17 +23,14 @@
   "admin_uploads": "Envois",
   "admin_cards": "Cartes / PDFs",
   "admin_logout": "Se déconnecter",
-
   "config_title": "Configuration de l'événement",
   "config_intro": "Personnalisez l'événement, la langue, l'URL publique, le texte légal et le prix.",
   "config_language": "Langue",
   "config_save": "Enregistrer la configuration",
-
   "missions_search_title": "Trouvez vos missions",
   "missions_search_intro": "Saisissez votre nom, alias ou code pour voir vos missions assignées.",
   "missions_search_placeholder": "Nom, alias ou code",
   "missions_search_button": "Rechercher",
-
   "upload_title": "Envoyer une photo ou vidéo",
   "upload_guest": "Participant",
   "upload_mission": "Mission",
@@ -45,7 +40,18 @@
   "upload_success_intro": "Votre photo ou vidéo a été enregistrée correctement.",
   "uploads_closed_title": "Envois fermés",
   "uploads_closed_intro": "Les envois ne sont pas encore ouverts.",
-
   "ranking_title": "Classement",
-  "ranking_intro": "Consultez le classement des participants."
+  "ranking_intro": "Consultez le classement des participants.",
+  "config_page_title": "Configuration",
+  "config_admin_tag": "Panneau admin",
+  "config_intro_detail": "Personnalisez l'application pour différents types d'événement sans modifier les fichiers depuis la console.",
+  "config_event_data": "Détails de l'événement",
+  "config_event_type": "Type d'événement",
+  "config_event_hosts": "Organisateurs / protagonistes",
+  "config_event_label": "Libellé de l'événement",
+  "config_protagonists_label": "Libellé des protagonistes",
+  "config_prize_text": "Texte du prix",
+  "config_legal_text": "Texte légal d'envoi",
+  "config_go_missions": "Aller aux missions",
+  "config_back_dashboard": "Retour au tableau de bord"
 }
