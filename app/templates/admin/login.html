@@ -1,20 +1,24 @@
 <!doctype html>
-<html lang="es">
+<html lang="{{ language|default('es') }}">
 <head>
   <meta charset="utf-8">
-  <title>Acceso admin - {{ app_name }}</title>
+  <title>{{ t("admin_login_title") }} - {{ app_name }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
   <main class="page">
     <section class="card">
-      <div class="tag">Panel privado</div>
+      <div class="tag">{{ t("admin_login_tag") }}</div>
 
-      <h1>Acceso admin</h1>
+      <h1>{{ t("admin_login_title") }}</h1>
 
       <p class="intro">
-        Introduce usuario y contraseña{% if twofa_enabled %}, además del código 2FA{% endif %}.
+        {% if twofa_enabled %}
+          {{ t("admin_login_intro_2fa") }}
+        {% else %}
+          {{ t("admin_login_intro_basic") }}
+        {% endif %}
       </p>
 
       {% if error %}
@@ -22,19 +26,20 @@
       {% endif %}
 
       <form method="post" action="/admin/login" class="form">
-        <input name="username" placeholder="Usuario" required>
-        <input name="password" type="password" placeholder="Contraseña" required>
+        <input name="username" placeholder="{{ t('admin_login_username') }}" required>
+        <input name="password" type="password" placeholder="{{ t('admin_login_password') }}" required>
+
         {% if twofa_enabled %}
-          <input name="token" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="Código 2FA" required>
+          <input name="token" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="{{ t('admin_login_2fa') }}" required>
         {% else %}
           <input name="token" type="hidden" value="">
         {% endif %}
 
-        <button class="btn primary" type="submit">Entrar</button>
+        <button class="btn primary" type="submit">{{ t("admin_login_button") }}</button>
       </form>
 
       <div class="buttons">
-        <a href="/" class="btn">Volver a la web pública</a>
+        <a href="/" class="btn">{{ t("admin_back_public") }}</a>
       </div>
     </section>
   </main>

@@ -62,6 +62,7 @@ def inicio(request: Request):
         context={
             "app_name": get_setting("APP_NAME", "Event Photo Missions"),
             "event_date": get_setting("EVENT_DATE", "Event date"),
+            **language_context(),
         },
     )
 
@@ -75,6 +76,7 @@ def admin_login_get(request: Request, error: str = ""):
             "app_name": get_setting("APP_NAME", "Event Photo Missions"),
             "twofa_enabled": bool(admin_2fa_secret().strip()),
             "error": error,
+            **language_context(),
         },
     )
 
@@ -564,6 +566,7 @@ def admin_configuracion(request: Request):
             "config": config,
             "event_types": ALLOWED_EVENT_TYPES,
             "supported_languages": SUPPORTED_LANGUAGES,
+            **language_context(),
         },
     )
 
